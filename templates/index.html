@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Index</title>
+  </head>
+  <body>
+    <nav>
+      <a href="{{ url_for('index') }}">Home</a>
+      {% if not current_user.is_authenticated %}
+      <a href="{{ url_for('login') }}">Login</a>
+      <a href="{{ url_for('register') }}">Register</a>
+      {% endif %}
+      {% if current_user.is_authenticated %}
+      <a href="{{ url_for('dashboard') }}">Dashboard</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
+      {% endif %}
+    </nav>
+    <div class="container">
+        <h1>Welcome to Flask Auth</h1>
+        <p>Use this as a template for login.</p>
+        <div class="features">
+            <div class="feature">
+                <h2>Using PostgreSQL</h2>
+                <p>Includes SQL script to create essentials..</p>
+            </div>
+            <div class="feature">
+                <h2>Add your code</h2>
+                <p>Run it easily and add your code.</p>
+            </div>
+        </div>
+        <a href="{{ url_for('register') }}" class="cta-button">Register Now</a>
+    </div>
+  </body>
+</html>
